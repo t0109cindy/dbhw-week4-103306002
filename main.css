@@ -1,0 +1,187 @@
+body{
+  background: beige ;
+}
+
+.navbar{
+  background: #844200;
+}
+
+.jumbotron{
+  background: #FFC78E;
+  color:  #3D2200;
+}
+
+.list-group-item{
+  background: burlywood;
+}
+
+.list-group2{
+   background: burlywood;
+}
+
+.col-md-4 {
+  height: 650px;
+  overflow: auto;
+  opacity: 0;
+  background: wheat;
+}
+.drop-1 {
+  -webkit-animation: fade-in 0.5s linear 0.1s 1;
+          animation: fade-in 0.5s linear 0.1s 1;
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.drop-2 {
+  -webkit-animation: fade-in 0.5s linear 0.3s 1;
+          animation: fade-in 0.5s linear 0.3s 1;
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.drop-3 {
+  -webkit-animation: fade-in 0.5s linear 0.5s 1;
+          animation: fade-in 0.5s linear 0.5s 1;
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.drop-4 {
+  -webkit-animation: fade-in 0.5s linear 0.7s 1;
+          animation: fade-in 0.5s linear 0.7s 1;
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+}
+
+
+
+.sk-cube-grid {
+  width: 40px;
+  height: 40px;
+  margin: 100px auto;
+}
+
+.sk-cube-grid .sk-cube {
+  width: 33%;
+  height: 33%;
+  border-radius: 10px;
+  background-color: orange;
+  float: left;
+  -webkit-animation: sk-cubeGridScaleDelay 1.2s infinite ease-in-out;
+          animation: sk-cubeGridScaleDelay 1.2s infinite ease-in-out;
+}
+.sk-cube-grid .sk-cube1 {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s; }
+.sk-cube-grid .sk-cube2 {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s; }
+.sk-cube-grid .sk-cube3 {
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s; }
+.sk-cube-grid .sk-cube4 {
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s; }
+.sk-cube-grid .sk-cube5 {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s; }
+.sk-cube-grid .sk-cube6 {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s; }
+.sk-cube-grid .sk-cube7 {
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s; }
+.sk-cube-grid .sk-cube8 {
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s; }
+.sk-cube-grid .sk-cube9 {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s; }
+
+@-webkit-keyframes sk-cubeGridScaleDelay {
+  0%, 70%, 100% {
+    -webkit-transform: scale3D(1, 1, 1);
+            transform: scale3D(1, 1, 1);
+  } 35% {
+    -webkit-transform: scale3D(0, 0, 1);
+            transform: scale3D(0, 0, 1);
+  }
+}
+
+@keyframes sk-cubeGridScaleDelay {
+  0%, 70%, 100% {
+    -webkit-transform: scale3D(1, 1, 1);
+            transform: scale3D(1, 1, 1);
+  } 35% {
+    -webkit-transform: scale3D(0, 0, 1);
+            transform: scale3D(0, 0, 1);
+  }
+}
+
+@-webkit-keyframes fade-in {
+   0% {
+     opacity: 0;
+     transform: translateY(-20px);
+     color: orange;
+   }
+   20% {
+     opacity: 0.2;
+     color: yellow;
+   }
+   40%
+   {
+     opacity: 0.4;
+     transform: translateY(30px);
+     color: green;
+   }
+   60%
+   {
+     opacity: 0.6;
+     transform: translateY(30px);
+     color: blue;
+   }
+   80%
+   {
+     opacity: 0.8;
+     color: navy;
+   }
+   100% {
+     opacity: 1;
+     transform: translateY(0px);
+     color: saddlebrown;
+   }
+}
+/* Standard syntax */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+    color: orange;
+  }
+  20% {
+    opacity: 0.2;
+    color: yellow;
+  }
+  40%
+  {
+    opacity: 0.4;
+    transform: translateY(30px);
+    color: green;
+  }
+  60%
+  {
+    opacity: 0.6;
+    transform: translateY(30px);
+    color: blue;
+  }
+  80%
+  {
+    opacity: 0.8;
+    color: navy;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+    color: saddlebrown;
+  }
+}

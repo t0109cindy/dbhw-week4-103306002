@@ -1,6 +1,7 @@
+
 <html>
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/lodash/4.6.1/lodash.min.js"></script>
     <!-- Latest compiled and minified CSS -->
@@ -9,46 +10,54 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./main.css">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="./js/main.js"></script>
+    <script type="text/javascript" src="./main.js"></script>
+    <style type="text/css">
+A:link {color: #3D2200}
+A:visited {color: #3D2200}
+A:active {color: #B87D00}
+A:hover {color: #B87D00}
+A{text-decoration: none}
+</style>
   </head>
   <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">臺北市公眾區免費無線上網熱點</a>
+          <a class="navbar-brand" href="#">TOP</a>
         </div>
       </div>
     </nav>
- <!-- Main jumbotron for a primary marketing message or call to action -->
+
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
         <br>
         <br>
-        <h1>臺北市公眾區免費無線上網熱點</h1>
+        <h1>文化快遞資訊介紹</h1>
+        <h2>來看看有哪些活動喔～</h2>
       </div>
     </div>
 
     <div class="container">
       <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <img src="http://163.29.39.183/uploads/images/medium/2a2785be-2cce-4e37-86d0-742e75f9ace3.jpg"class="img-thumbnail">
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-       </div>
+      <div id="content" class="row"></div>
+      <div class="sk-cube-grid">
+        <div class="sk-cube sk-cube1"></div>
+        <div class="sk-cube sk-cube2"></div>
+        <div class="sk-cube sk-cube3"></div>
+        <div class="sk-cube sk-cube4"></div>
+        <div class="sk-cube sk-cube5"></div>
+        <div class="sk-cube sk-cube6"></div>
+        <div class="sk-cube sk-cube7"></div>
+        <div class="sk-cube sk-cube8"></div>
+        <div class="sk-cube sk-cube9"></div>
       </div>
-
       <hr>
-       <footer>
+      <footer>
         <p>&copy; 2016 NCCU MIS</p>
       </footer>
     </div> <!-- /container -->
@@ -56,14 +65,41 @@
   </body>
   <script type="text/javascript">
     $(document).ready(function() {
-      getData(function(err, result) {
+      getData(function(err, data) {
         if(err) {
           console.log(err);
         } else {
-          console.log(result);
+          var EventList = data.result.results;
+          var HTMLEventList = EventList.map(function(event) {
+
+            var HTMLString1 = "<div class='col-md-4 drop-"+(Math.round(Math.random()*10000%3)+1)+"'><h2>"+event.EventName+"</h2>";
+            if (event.ImageFile != null) {
+              var HTMLString2 = "<B><img class='img-thumbnail' src='"+event.ImageFile+"'><br></B>"}
+              else{
+                var HTMLString2 = "";
+              }
+            var HTMLString3 = "<a href = " + event.EventUrl + ">官網連結網址</a><br><a href = " + event.YouTubeUrl + ">影片連結網址</a><p><ul class='list-group'>";
+            var items = "";
+            for (var key in event) {
+              if(key == "DurationStart" || key == "DurationEnd" || key == "Fee"|| key == "timeStart" || key == "Location" || key == "Address") {
+                items=items+"<li class='list-group-item'>"+key+":"+event[key]+"</li></ul></p>";
+              }
+            }
+            var Introduction = "<p><ul class='list-group2'>"+"Introduction:"+event.BriefIntroduction+"</ul></p>";
+          
+            Introduction.replace("\r\n", "   ");
+            var Content = "<p><ul class='list-group2'>"+"Content:"+event.vContent+"</ul></p>";
+            Content.replace("\r\n", "   ");
+            var HTMLString = HTMLString1 + HTMLString2 + HTMLString3+items+Introduction+Content+"<div>";
+            return HTMLString;
+          });
+          HTMLEventList.forEach(function(html) {
+            $(html).appendTo("#content");
+          });
+          $('.sk-cube-grid').css('display', 'none');
         }
       });
     });
   </script>
 </html>
-Status API Training Shop Blog About
+
